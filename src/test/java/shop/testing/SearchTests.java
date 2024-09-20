@@ -5,9 +5,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.id;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SearchTests {
@@ -65,8 +65,12 @@ public class SearchTests {
 //15. Click 'Continue' button
         $("a[data-qa='continue-button']").click();
 //16. Verify that 'Logged in as username' is visible
+        $(withText("Logged in as")).shouldBe(visible);
 //17. Click 'Delete Account' button
+        $(withText("Delete Account")).click();
 //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+        $(withText("ACCOUNT DELETED!")).shouldBe(visible);
+
     }
 
     @Test
